@@ -1,0 +1,31 @@
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+bin/
+obj/
+
+# ASP.NET Core
+*.csproj
+*.csproj.user
+*.publishsettings
+wwwroot/
+
+# MySQL
+/bin/
+/obj/
+*.suo
+*.user
+*.userosscache
+/MySQL/*
+
+# Other
+Thumbs.db
+*DS_Store
