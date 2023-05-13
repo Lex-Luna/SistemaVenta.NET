@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using SistemaVenta.Entity;
 
-namespace SistemaVenta.Entity;
+namespace SistemaVenta.DAL.DBContext;
 
 public partial class DbventaContext : DbContext
 {
@@ -15,33 +16,34 @@ public partial class DbventaContext : DbContext
     {
     }
 
-    public virtual DbSet<Categorium> Categoria { get; set; }
+    public virtual DbSet<Categoria> Categoria { get; set; }
 
-    public virtual DbSet<Configuracion> Configuracions { get; set; }
+    public virtual DbSet<Configuracion> Configuracion { get; set; }
 
-    public virtual DbSet<Detalleventum> Detalleventa { get; set; }
+    public virtual DbSet<Detalleventa> Detalleventa { get; set; }
 
-    public virtual DbSet<Menu> Menus { get; set; }
+    public virtual DbSet<Menu> Menu { get; set; }
 
-    public virtual DbSet<Negocio> Negocios { get; set; }
+    public virtual DbSet<Negocio> Negocio { get; set; }
 
-    public virtual DbSet<Numerocorrelativo> Numerocorrelativos { get; set; }
+    public virtual DbSet<Numerocorrelativo> Numerocorrelativo { get; set; }
 
-    public virtual DbSet<Producto> Productos { get; set; }
+    public virtual DbSet<Producto> Producto { get; set; }
 
-    public virtual DbSet<Rol> Rols { get; set; }
+    public virtual DbSet<Rol> Rol { get; set; }
 
-    public virtual DbSet<Rolmenu> Rolmenus { get; set; }
+    public virtual DbSet<Rolmenu> Rolmenu { get; set; }
 
-    public virtual DbSet<Tipodocumentoventum> Tipodocumentoventa { get; set; }
+    public virtual DbSet<Tipodocumentoventa> Tipodocumentoventa { get; set; }
 
-    public virtual DbSet<Usuario> Usuarios { get; set; }
+    public virtual DbSet<Usuario> Usuario { get; set; }
 
-    public virtual DbSet<Ventum> Venta { get; set; }
+    public virtual DbSet<Venta> Venta { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=localhost;database=dbventa;uid=root;pwd=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql"));
+    {
+
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -49,7 +51,7 @@ public partial class DbventaContext : DbContext
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
 
-        modelBuilder.Entity<Categorium>(entity =>
+        modelBuilder.Entity<Categoria>(entity =>
         {
             entity.HasKey(e => e.IdCategoria).HasName("PRIMARY");
 
@@ -85,7 +87,7 @@ public partial class DbventaContext : DbContext
                 .HasColumnName("valor");
         });
 
-        modelBuilder.Entity<Detalleventum>(entity =>
+        modelBuilder.Entity<Detalleventa>(entity =>
         {
             entity.HasKey(e => e.IdDetalleVenta).HasName("PRIMARY");
 
@@ -269,7 +271,7 @@ public partial class DbventaContext : DbContext
             entity.Property(e => e.IdRol).HasColumnName("idRol");
         });
 
-        modelBuilder.Entity<Tipodocumentoventum>(entity =>
+        modelBuilder.Entity<Tipodocumentoventa>(entity =>
         {
             entity.HasKey(e => e.IdTipoDocumentoVenta).HasName("PRIMARY");
 
@@ -323,7 +325,7 @@ public partial class DbventaContext : DbContext
                 .HasColumnName("urlFoto");
         });
 
-        modelBuilder.Entity<Ventum>(entity =>
+        modelBuilder.Entity<Venta>(entity =>
         {
             entity.HasKey(e => e.IdVenta).HasName("PRIMARY");
 
